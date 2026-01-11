@@ -32,6 +32,7 @@ Partial Class FormKasir
     Private WithEvents btnStruk As System.Windows.Forms.Button
     Private WithEvents btnCSV As System.Windows.Forms.Button
     Private WithEvents btnReset As System.Windows.Forms.Button
+    Private menuRadios As New System.Collections.Generic.List(Of System.Windows.Forms.RadioButton)
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
@@ -219,6 +220,36 @@ Partial Class FormKasir
 
         Me.ResumeLayout(False)
         Me.PerformLayout()
+    End Sub
+
+    Private Sub FormKasir_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' ===== Initialize Totals =====
+        lblSubtotal.Text = String.Format("{0,-15}Rp{1,12:N0}", "Subtotal", 0)
+        lblDiskon.Text = String.Format("{0,-15}Rp{1,12:N0}", "Diskon", 0)
+        lblTotal.Text = String.Format("{0,-15}Rp{1,12:N0}", "Total", 0)
+
+
+        ' ===== Initialize Menus =====
+        Dim y As Integer = 34
+
+        For Each menuItem In MenuItems
+            Dim rb As New RadioButton()
+
+            rb.AutoSize = True
+            rb.Font = New Font("Consolas", 10)
+            rb.Text = String.Format(
+                "{0,-25}Rp{1,8:N0}",
+                menuItem.Name,
+                menuItem.Price
+            )
+            rb.Tag = menuItem
+            rb.Location = New Point(15, y)
+
+            grpMenu.Controls.Add(rb)
+            menuRadios.Add(rb)
+
+            y += 34
+        Next
     End Sub
 
     Private Sub TxtQty_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQty.KeyPress
