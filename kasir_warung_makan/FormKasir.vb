@@ -51,7 +51,7 @@
     End Sub
 
     Private Sub BtnStruk_Click(sender As Object, e As EventArgs) Handles btnStruk.Click
-        If bayar < total Then
+        If bayar = 0 OrElse bayar < total Then
             MessageBox.Show(
                 "Pembayaran belum dilakukan",
                 "Info",
@@ -79,7 +79,7 @@
         struk &= String.Format("{0,-20}Rp{1,12:N0}" & Environment.NewLine, "Kembalian", kembalian)
         struk &= "============================" & Environment.NewLine
 
-        Dim frm As New Form With {
+        Using frm As New Form With {
             .Text = "Struk Pembayaran",
             .StartPosition = FormStartPosition.CenterScreen,
             .Size = New Size(360, 500),
@@ -88,17 +88,18 @@
             .MinimizeBox = False
         }
 
-        Dim txtStruk As New TextBox With {
-            .Multiline = True,
-            .ReadOnly = True,
-            .Dock = DockStyle.Fill,
-            .Font = New Font("Consolas", 10),
-            .ScrollBars = ScrollBars.Vertical,
-            .Text = struk
-        }
+            Dim txtStruk As New TextBox With {
+                .Multiline = True,
+                .ReadOnly = True,
+                .Dock = DockStyle.Fill,
+                .Font = New Font("Consolas", 10),
+                .ScrollBars = ScrollBars.Vertical,
+                .Text = struk
+            }
 
-        frm.Controls.Add(txtStruk)
-        frm.ShowDialog()
+            frm.Controls.Add(txtStruk)
+            frm.ShowDialog()
+        End Using
     End Sub
 
     Private Sub BtnProses_Click(sender As Object, e As EventArgs) Handles btnProses.Click
@@ -119,6 +120,7 @@
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
             )
+            Return
         End If
 
         Dim valid As Boolean = False
@@ -242,11 +244,6 @@
             }
             lstPesanan.Items.Add(newItem)
         End If
-
-        Dim item As New CartItem With {
-            .Menu = menu,
-            .Qty = qty
-        }
 
         subtotal = lstPesanan.Items.Cast(Of CartItem)().Sum(Function(i) i.Total)
         diskon = CalculateDiscount(subtotal)
