@@ -213,10 +213,10 @@ Partial Class FormKasir
         End With
 
         Me.Controls.AddRange(New Control() {
-        Me.grpMenu, Me.grpPesanan,
-        Me.lblSubtotal, Me.lblDiskon, Me.lblTagTotal, Me.lblTotal,
-        Me.btnProses, Me.btnStruk, Me.btnCSV, Me.btnReset
-    })
+            Me.grpMenu, Me.grpPesanan,
+            Me.lblSubtotal, Me.lblDiskon, Me.lblTagTotal, Me.lblTotal,
+            Me.btnProses, Me.btnStruk, Me.btnCSV, Me.btnReset
+        })
 
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -227,7 +227,7 @@ Partial Class FormKasir
         lblSubtotal.Text = String.Format("{0,-15}Rp{1,12:N0}", "Subtotal", 0)
         lblDiskon.Text = String.Format("{0,-15}Rp{1,12:N0}", "Diskon", 0)
         lblTotal.Text = String.Format("{0,-15}Rp{1,12:N0}", "Total", 0)
-
+        txtQty.Text = "0"
 
         ' ===== Initialize Menus =====
         Dim y As Integer = 34
