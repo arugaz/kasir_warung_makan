@@ -22,12 +22,9 @@
         If username.Equals(DefaultUsername, StringComparison.OrdinalIgnoreCase) AndAlso
            password = DefaultPassword Then
             ' login successful
-            MessageBox.Show(
-                "Login berhasil! Selamat datang, " & DefaultUsername & ".",
-                "Sukses",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            )
+            Dim frmKasir As New FormKasir()
+            frmKasir.Show()
+            Me.Close()
         Else
             MessageBox.Show(
                 "Username atau password salah!" & vbCrLf & vbCrLf &
