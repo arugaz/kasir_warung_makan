@@ -16,9 +16,9 @@
     End Sub
 
     Private Sub BtnCSV_Click(sender As Object, e As EventArgs) Handles btnCSV.Click
-        If lstPesanan.Items.Count = 0 Then
+        If bayar = 0 OrElse bayar < total Then
             MessageBox.Show(
-                "Tidak ada pesanan untuk disimpan",
+                "Tidak ada transaksi yang dapat disimpan.",
                 "Info",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
