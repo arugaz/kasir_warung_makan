@@ -45,9 +45,9 @@
 
     Friend Function CalculateDiscount(subtotal As Integer) As Integer
         Dim rule = DiscountRules _
-        .Where(Function(r) subtotal >= r.MinSubtotal) _
-        .OrderByDescending(Function(r) r.MinSubtotal) _
-        .FirstOrDefault()
+            .Where(Function(r) subtotal >= r.MinSubtotal) _
+            .OrderByDescending(Function(r) r.MinSubtotal) _
+            .FirstOrDefault()
 
         If rule Is Nothing Then Return 0
         Return subtotal * rule.Percent / 100.0
