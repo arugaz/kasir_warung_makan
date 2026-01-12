@@ -4,6 +4,7 @@
     Dim total As Integer = 0
     Dim bayar As Integer = 0
     Dim noTransaksi As Integer = 0
+    Dim struk As New System.Text.StringBuilder()
 
     Private Sub BtnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
         subtotal = 0
@@ -63,7 +64,6 @@
 
         Dim kembalian As Integer = bayar - total
 
-        Dim struk As New System.Text.StringBuilder()
         Dim strukWidth As Integer = 45
 
         struk.AppendLine(New String("="c, strukWidth))
@@ -112,6 +112,8 @@
             AddHandler frm.Shown, Sub() frm.ActiveControl = Nothing
             frm.ShowDialog()
         End Using
+
+        struk.Clear()
     End Sub
 
     Private Sub BtnProses_Click(sender As Object, e As EventArgs) Handles btnProses.Click
