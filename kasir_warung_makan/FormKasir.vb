@@ -4,6 +4,7 @@
     Dim total As New Decimal
     Dim bayar As New Decimal
     Dim noTransaksi As New Integer
+    Dim tanggalTransaksi As New Date
     Dim struk As New System.Text.StringBuilder()
 
     Private Sub BtnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
@@ -11,7 +12,9 @@
         diskon = 0D
         total = 0D
         bayar = 0D
+        tanggalTransaksi = Date.MinValue
         lstPesanan.Items.Clear()
+        menuRadios.ForEach(Sub(rb) rb.Checked = False)
         txtQty.Text = "0"
         UpdateTotalLabel()
     End Sub
@@ -30,12 +33,12 @@
         Using sfd As New SaveFileDialog()
             sfd.Filter = "CSV Files (*.csv)|*.csv"
             sfd.Title = "Simpan Pesanan sebagai CSV"
-            sfd.FileName = $"pesanan_{DateTime.Now:yyyyMMdd}.csv"
+            sfd.FileName = $"pesanan_{tanggalTransaksi:yyyyMMdd}.csv"
             If sfd.ShowDialog() = DialogResult.OK Then
                 Using writer As New IO.StreamWriter(sfd.FileName)
                     writer.WriteLine("No. Transaksi,Tanggal,Menu,Jumlah,Harga Satuan,Total")
                     For Each item As CartItem In lstPesanan.Items
-                        writer.WriteLine($"{noTransaksi},{DateTime.Now:yyyyMMdd_HHmmss},{item.Menu.Name},{item.Qty},{item.Menu.Price},{item.Total}")
+                        writer.WriteLine($"{noTransaksi},{tanggalTransaksi:yyyyMMdd_HHmmss},{item.Menu.Name},{item.Qty},{item.Menu.Price},{item.Total}")
                     Next
                     writer.WriteLine($",,Subtotal,,,{subtotal}")
                     writer.WriteLine($",,Diskon,,,{diskon}")
@@ -70,8 +73,8 @@
         struk.AppendLine("STRUK PEMBELIAN".PadLeft((strukWidth + "STRUK PEMBELIAN".Length) \ 2))
         struk.AppendLine(New String("="c, strukWidth))
         struk.AppendLine()
-        struk.AppendLine(String.Format("{0,-15}: {1}", "Tanggal", Date.Now.ToString("yyyy/MM/dd")))
-        struk.AppendLine(String.Format("{0,-15}: {1}", "Waktu", Date.Now.ToString("HH:mm:ss")))
+        struk.AppendLine(String.Format("{0,-15}: {1}", "Tanggal", tanggalTransaksi.ToString("yyyy/MM/dd")))
+        struk.AppendLine(String.Format("{0,-15}: {1}", "Waktu", tanggalTransaksi.ToString("HH:mm:ss")))
         struk.AppendLine(String.Format("{0,-15}: {1}", "No. Transaksi", noTransaksi))
         struk.AppendLine()
         struk.AppendLine(New String("-"c, strukWidth))
@@ -184,6 +187,7 @@
         Loop
 
         noTransaksi += 1
+        tanggalTransaksi = Date.Now
 
         MessageBox.Show(
             "Pembayaran berhasil diproses!",
