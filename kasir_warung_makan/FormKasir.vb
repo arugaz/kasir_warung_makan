@@ -1,16 +1,16 @@
 ﻿Public Class FormKasir
-    Dim subtotal As Integer = 0
-    Dim diskon As Integer = 0
-    Dim total As Integer = 0
-    Dim bayar As Integer = 0
-    Dim noTransaksi As Integer = 0
+    Dim subtotal As New Decimal
+    Dim diskon As New Decimal
+    Dim total As New Decimal
+    Dim bayar As New Decimal
+    Dim noTransaksi As New Integer
     Dim struk As New System.Text.StringBuilder()
 
     Private Sub BtnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
-        subtotal = 0
-        diskon = 0
-        total = 0
-        bayar = 0
+        subtotal = 0D
+        diskon = 0D
+        total = 0D
+        bayar = 0D
         lstPesanan.Items.Clear()
         txtQty.Text = "0"
         UpdateTotalLabel()
@@ -62,7 +62,7 @@
             Return
         End If
 
-        Dim kembalian As Integer = bayar - total
+        Dim kembalian As Decimal = bayar - total
 
         Dim strukWidth As Integer = 45
 
@@ -150,7 +150,7 @@
                 Exit Sub
             End If
 
-            If Not Integer.TryParse(inputBayar, bayar) Then
+            If Not Decimal.TryParse(inputBayar, bayar) Then
                 MessageBox.Show(
                     "Masukkan angka yang valid!",
                     "Peringatan",
@@ -227,7 +227,7 @@
             Return
         End If
 
-        Dim menu As MenuItem = CType(selectedRb.Tag, MenuItem)
+        Dim menu As MenuItem = TryCast(selectedRb.Tag, MenuItem)
 
         Dim qty As Integer
         If Not Integer.TryParse(txtQty.Text, qty) OrElse qty <= 0 Then
@@ -263,6 +263,7 @@
 
         UpdateTotalLabel()
 
+        selectedRb.Checked = False
         txtQty.Text = "0"
         txtQty.Focus()
     End Sub

@@ -109,6 +109,7 @@ Partial Class FormKasir
         With Me.lstPesanan
             .Location = New System.Drawing.Point(15, 30)
             .Size = New System.Drawing.Size(330, 130)
+            .Font = New System.Drawing.Font("Consolas", 10.0F)
         End With
 
         With Me.btnHapus

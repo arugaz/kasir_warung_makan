@@ -7,50 +7,53 @@
     Friend Class MenuItem
         Public Property Code As String
         Public Property Name As String
-        Public Property Price As Integer
+        Public Property Price As Decimal
     End Class
 
     Friend ReadOnly MenuItems As New List(Of MenuItem) From {
-        New MenuItem With {.Code = "M001", .Name = "Nasi Goreng", .Price = 15000},
-        New MenuItem With {.Code = "M002", .Name = "Mie Goreng", .Price = 12000},
-        New MenuItem With {.Code = "M003", .Name = "Ayam Bakar", .Price = 20000},
-        New MenuItem With {.Code = "M004", .Name = "Es Teh", .Price = 5000}
+        New MenuItem With {.Code = "M001", .Name = "Nasi Goreng", .Price = 15_000D},
+        New MenuItem With {.Code = "M002", .Name = "Mie Goreng", .Price = 12_000D},
+        New MenuItem With {.Code = "M003", .Name = "Ayam Bakar", .Price = 20_000D},
+        New MenuItem With {.Code = "M004", .Name = "Es Teh", .Price = 5_000D}
     }
 
     Friend Class CartItem
         Public Property Menu As MenuItem
         Public Property Qty As Integer
-        Public ReadOnly Property Total As Integer
+        Public ReadOnly Property Total As Decimal
             Get
                 Return Menu.Price * Qty
             End Get
         End Property
 
         Public Overrides Function ToString() As String
-            Return $"{Menu.Name} x{Qty} = Rp{Total:N0}"
+            Return String.Format("{0,-17} x{1,-12} Rp{2,12:N0}", Menu.Name, Qty, Total)
         End Function
     End Class
 
 
     ' ===== Discount Rules =====
     Friend Class DiscountRule
-        Public MinSubtotal As Integer
-        Public Percent As Integer
+        Public MinSubtotal As Decimal
+        Public Percent As Decimal
     End Class
 
     Friend ReadOnly DiscountRules As New List(Of DiscountRule) From {
-        New DiscountRule With {.MinSubtotal = 100000, .Percent = 15},
-        New DiscountRule With {.MinSubtotal = 50000, .Percent = 10}
+        New DiscountRule With {.MinSubtotal = 100_000D, .Percent = 15D},
+        New DiscountRule With {.MinSubtotal = 50_000, .Percent = 10D}
     }
 
-    Friend Function CalculateDiscount(subtotal As Integer) As Integer
-        Dim rule = DiscountRules _
-            .Where(Function(r) subtotal >= r.MinSubtotal) _
-            .OrderByDescending(Function(r) r.MinSubtotal) _
-            .FirstOrDefault()
+    Friend Function CalculateDiscount(subtotal As Decimal) As Decimal
+        Dim rule =
+            DiscountRules.
+            Where(Function(r) subtotal >= r.MinSubtotal).
+            OrderByDescending(Function(r) r.MinSubtotal).
+            FirstOrDefault()
 
-        If rule Is Nothing Then Return 0
-        Return subtotal * rule.Percent / 100.0
+        If rule Is Nothing Then Return 0D
+
+        Return subtotal * (rule.Percent / 100D)
     End Function
+
 
 End Module
