@@ -123,8 +123,6 @@
             Return
         End If
 
-        Dim valid As Boolean = False
-
         Do
             Dim inputBayar As String = InputBox("Masukkan jumlah bayar (dalam Rupiah):", "Pembayaran", "0")
 
@@ -168,8 +166,8 @@
                 Continue Do
             End If
 
-            valid = True
-        Loop Until valid
+            Exit Do
+        Loop
 
         noTransaksi += 1
 
