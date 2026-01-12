@@ -209,7 +209,6 @@ Partial Class FormKasir
             .Font = New Font("Segoe UI", 9.75F)
             .FormBorderStyle = FormBorderStyle.FixedDialog
             .MaximizeBox = False
-            .MinimizeBox = False
             .StartPosition = FormStartPosition.CenterScreen
         End With
 
