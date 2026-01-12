@@ -1,9 +1,9 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class FormKasir
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -15,84 +15,84 @@ Partial Class FormKasir
     End Sub
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+    Private components As IContainer
 
-    Private grpMenu As System.Windows.Forms.GroupBox
-    Private WithEvents txtQty As System.Windows.Forms.TextBox
-    Private lblQty As System.Windows.Forms.Label
-    Private WithEvents btnTambah As System.Windows.Forms.Button
-    Private WithEvents btnHapus As System.Windows.Forms.Button
-    Private grpPesanan As System.Windows.Forms.GroupBox
-    Private lstPesanan As System.Windows.Forms.ListBox
-    Private lblSubtotal As System.Windows.Forms.Label
-    Private lblDiskon As System.Windows.Forms.Label
-    Private lblTagTotal As System.Windows.Forms.Label
-    Private lblTotal As System.Windows.Forms.Label
-    Private WithEvents btnProses As System.Windows.Forms.Button
-    Private WithEvents btnStruk As System.Windows.Forms.Button
-    Private WithEvents btnCSV As System.Windows.Forms.Button
-    Private WithEvents btnReset As System.Windows.Forms.Button
-    Private menuRadios As New System.Collections.Generic.List(Of System.Windows.Forms.RadioButton)
+    Private grpMenu As GroupBox
+    Private WithEvents txtQty As TextBox
+    Private lblQty As Label
+    Private WithEvents btnTambah As Button
+    Private WithEvents btnHapus As Button
+    Private grpPesanan As GroupBox
+    Private lstPesanan As ListBox
+    Private lblSubtotal As Label
+    Private lblDiskon As Label
+    Private lblTagTotal As Label
+    Private lblTotal As Label
+    Private WithEvents btnProses As Button
+    Private WithEvents btnStruk As Button
+    Private WithEvents btnCSV As Button
+    Private WithEvents btnReset As Button
+    Private menuRadios As New List(Of RadioButton)
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
+        Me.components = New Container()
 
-        Me.grpMenu = New System.Windows.Forms.GroupBox()
-        Me.lblQty = New System.Windows.Forms.Label()
-        Me.txtQty = New System.Windows.Forms.TextBox()
-        Me.btnTambah = New System.Windows.Forms.Button()
+        Me.grpMenu = New GroupBox()
+        Me.lblQty = New Label()
+        Me.txtQty = New TextBox()
+        Me.btnTambah = New Button()
 
-        Me.grpPesanan = New System.Windows.Forms.GroupBox()
-        Me.lstPesanan = New System.Windows.Forms.ListBox()
-        Me.btnHapus = New System.Windows.Forms.Button()
+        Me.grpPesanan = New GroupBox()
+        Me.lstPesanan = New ListBox()
+        Me.btnHapus = New Button()
 
-        Me.lblSubtotal = New System.Windows.Forms.Label()
-        Me.lblDiskon = New System.Windows.Forms.Label()
-        Me.lblTagTotal = New System.Windows.Forms.Label()
-        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.lblSubtotal = New Label()
+        Me.lblDiskon = New Label()
+        Me.lblTagTotal = New Label()
+        Me.lblTotal = New Label()
 
-        Me.btnProses = New System.Windows.Forms.Button()
-        Me.btnStruk = New System.Windows.Forms.Button()
-        Me.btnCSV = New System.Windows.Forms.Button()
-        Me.btnReset = New System.Windows.Forms.Button()
+        Me.btnProses = New Button()
+        Me.btnStruk = New Button()
+        Me.btnCSV = New Button()
+        Me.btnReset = New Button()
 
         Me.SuspendLayout()
 
         ' ===== Group Menu =====
         With Me.grpMenu
             .Text = "Menu Makanan & Minuman"   ' ← fixed && to &
-            .Font = New System.Drawing.Font("Segoe UI", 10.0F, FontStyle.Bold)
-            .ForeColor = System.Drawing.Color.FromArgb(0, 80, 160)
-            .Location = New System.Drawing.Point(15, 20)
-            .Size = New System.Drawing.Size(360, 200)
+            .Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+            .ForeColor = Color.FromArgb(0, 80, 160)
+            .Location = New Point(15, 20)
+            .Size = New Size(360, 200)
         End With
 
         With Me.lblQty
             .AutoSize = True
             .Text = "Jumlah :"
-            .Location = New System.Drawing.Point(15, 170)
+            .Location = New Point(15, 170)
         End With
 
         With Me.txtQty
-            .Location = New System.Drawing.Point(100, 170)
-            .Size = New System.Drawing.Size(60, 25)
-            .TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+            .Location = New Point(100, 170)
+            .Size = New Size(60, 25)
+            .TextAlign = HorizontalAlignment.Center
             .MaxLength = 4
         End With
 
         With Me.btnTambah
             .Text = "Tambah ke Pesanan"
-            .Location = New System.Drawing.Point(180, 170)
-            .Size = New System.Drawing.Size(155, 25)
-            .BackColor = System.Drawing.Color.FromArgb(0, 120, 215)
-            .ForeColor = System.Drawing.Color.White
-            .FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            .Location = New Point(180, 170)
+            .Size = New Size(155, 25)
+            .BackColor = Color.FromArgb(0, 120, 215)
+            .ForeColor = Color.White
+            .FlatStyle = FlatStyle.Flat
             .FlatAppearance.BorderSize = 0
-            .Cursor = System.Windows.Forms.Cursors.Hand
+            .Cursor = Cursors.Hand
         End With
 
         Me.grpMenu.Controls.AddRange(New Control() {Me.lblQty, Me.txtQty, Me.btnTambah})
@@ -100,117 +100,117 @@ Partial Class FormKasir
         ' ===== Group Pesanan =====
         With Me.grpPesanan
             .Text = "Daftar Pesanan"
-            .Font = New System.Drawing.Font("Segoe UI", 10.0F, FontStyle.Bold)
-            .ForeColor = System.Drawing.Color.FromArgb(0, 80, 160)
-            .Location = New System.Drawing.Point(15, 220)
-            .Size = New System.Drawing.Size(360, 200)
+            .Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+            .ForeColor = Color.FromArgb(0, 80, 160)
+            .Location = New Point(15, 220)
+            .Size = New Size(360, 200)
         End With
 
         With Me.lstPesanan
-            .Location = New System.Drawing.Point(15, 30)
-            .Size = New System.Drawing.Size(330, 130)
-            .Font = New System.Drawing.Font("Consolas", 10.0F)
+            .Location = New Point(15, 30)
+            .Size = New Size(330, 130)
+            .Font = New Font("Consolas", 10.0F)
         End With
 
         With Me.btnHapus
             .Text = "Hapus Item"
-            .Location = New System.Drawing.Point(15, 165)
-            .Size = New System.Drawing.Size(330, 25)
-            .BackColor = System.Drawing.Color.IndianRed
-            .ForeColor = System.Drawing.Color.White
-            .FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            .Location = New Point(15, 165)
+            .Size = New Size(330, 25)
+            .BackColor = Color.IndianRed
+            .ForeColor = Color.White
+            .FlatStyle = FlatStyle.Flat
             .FlatAppearance.BorderSize = 0
-            .Cursor = System.Windows.Forms.Cursors.Hand
+            .Cursor = Cursors.Hand
         End With
 
         Me.grpPesanan.Controls.AddRange(New Control() {Me.lstPesanan, Me.btnHapus})
 
         ' ===== Total Section =====
         With Me.lblSubtotal
-            .Size = New System.Drawing.Size(355, 30)
-            .TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-            .Font = New System.Drawing.Font("Consolas", 12.0F, FontStyle.Bold)
-            .Location = New System.Drawing.Point(410, 40)
+            .Size = New Size(355, 30)
+            .TextAlign = ContentAlignment.MiddleLeft
+            .Font = New Font("Consolas", 12.0F, FontStyle.Bold)
+            .Location = New Point(410, 40)
         End With
 
         With Me.lblDiskon
-            .Size = New System.Drawing.Size(355, 30)
-            .TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-            .Font = New System.Drawing.Font("Consolas", 12.0F, FontStyle.Bold)
-            .Location = New System.Drawing.Point(410, 85)
+            .Size = New Size(355, 30)
+            .TextAlign = ContentAlignment.MiddleLeft
+            .Font = New Font("Consolas", 12.0F, FontStyle.Bold)
+            .Location = New Point(410, 85)
         End With
 
         With Me.lblTagTotal
-            .Size = New System.Drawing.Size(355, 2)
-            .TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-            .Location = New System.Drawing.Point(410, 130)
-            .BackColor = System.Drawing.Color.FromArgb(200, 200, 200)
+            .Size = New Size(355, 2)
+            .TextAlign = ContentAlignment.MiddleLeft
+            .Location = New Point(410, 130)
+            .BackColor = Color.FromArgb(200, 200, 200)
         End With
 
         With Me.lblTotal
-            .Size = New System.Drawing.Size(355, 30)
-            .TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-            .Font = New System.Drawing.Font("Consolas", 12.0F, FontStyle.Bold)
-            .Location = New System.Drawing.Point(410, 175)
-            .ForeColor = System.Drawing.Color.FromArgb(0, 80, 160)
+            .Size = New Size(355, 30)
+            .TextAlign = ContentAlignment.MiddleLeft
+            .Font = New Font("Consolas", 12.0F, FontStyle.Bold)
+            .Location = New Point(410, 175)
+            .ForeColor = Color.FromArgb(0, 80, 160)
         End With
 
         ' ===== Action Buttons =====
         With Me.btnProses
             .Text = "PROSES"
-            .Location = New System.Drawing.Point(410, 255)
-            .Size = New System.Drawing.Size(110, 50)
-            .BackColor = System.Drawing.Color.FromArgb(40, 167, 69)
-            .ForeColor = System.Drawing.Color.White
-            .FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            .Location = New Point(410, 255)
+            .Size = New Size(110, 50)
+            .BackColor = Color.FromArgb(40, 167, 69)
+            .ForeColor = Color.White
+            .FlatStyle = FlatStyle.Flat
             .FlatAppearance.BorderSize = 0
-            .Cursor = System.Windows.Forms.Cursors.Hand
+            .Cursor = Cursors.Hand
         End With
 
         With Me.btnStruk
             .Text = "CETAK STRUK"
-            .Location = New System.Drawing.Point(410, 345)
-            .Size = New System.Drawing.Size(110, 50)
-            .BackColor = System.Drawing.Color.FromArgb(0, 123, 255)
-            .ForeColor = System.Drawing.Color.White
-            .FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            .Location = New Point(410, 345)
+            .Size = New Size(110, 50)
+            .BackColor = Color.FromArgb(0, 123, 255)
+            .ForeColor = Color.White
+            .FlatStyle = FlatStyle.Flat
             .FlatAppearance.BorderSize = 0
-            .Cursor = System.Windows.Forms.Cursors.Hand
+            .Cursor = Cursors.Hand
         End With
 
         With Me.btnCSV
             .Text = "SIMPAN CSV"
-            .Location = New System.Drawing.Point(654, 255)
-            .Size = New System.Drawing.Size(110, 50)
-            .BackColor = System.Drawing.Color.FromArgb(108, 117, 125)
-            .ForeColor = System.Drawing.Color.White
-            .FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            .Location = New Point(654, 255)
+            .Size = New Size(110, 50)
+            .BackColor = Color.FromArgb(108, 117, 125)
+            .ForeColor = Color.White
+            .FlatStyle = FlatStyle.Flat
             .FlatAppearance.BorderSize = 0
-            .Cursor = System.Windows.Forms.Cursors.Hand
+            .Cursor = Cursors.Hand
         End With
 
         With Me.btnReset
             .Text = "RESET"
-            .Location = New System.Drawing.Point(654, 345)
-            .Size = New System.Drawing.Size(110, 50)
-            .BackColor = System.Drawing.Color.FromArgb(220, 53, 69)
-            .ForeColor = System.Drawing.Color.White
-            .FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            .Location = New Point(654, 345)
+            .Size = New Size(110, 50)
+            .BackColor = Color.FromArgb(220, 53, 69)
+            .ForeColor = Color.White
+            .FlatStyle = FlatStyle.Flat
             .FlatAppearance.BorderSize = 0
-            .Cursor = System.Windows.Forms.Cursors.Hand
+            .Cursor = Cursors.Hand
         End With
 
         ' ===== Form Settings =====
         With Me
-            .AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-            .ClientSize = New System.Drawing.Size(800, 450)
+            .AutoScaleMode = AutoScaleMode.Font
+            .ClientSize = New Size(800, 450)
             .Text = "Warung Makan - Kasir"
-            .BackColor = System.Drawing.Color.FromArgb(248, 249, 250)
-            .Font = New System.Drawing.Font("Segoe UI", 9.75F)
-            .FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+            .BackColor = Color.FromArgb(248, 249, 250)
+            .Font = New Font("Segoe UI", 9.75F)
+            .FormBorderStyle = FormBorderStyle.FixedDialog
             .MaximizeBox = False
             .MinimizeBox = False
-            .StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+            .StartPosition = FormStartPosition.CenterScreen
         End With
 
         Me.Controls.AddRange(New Control() {

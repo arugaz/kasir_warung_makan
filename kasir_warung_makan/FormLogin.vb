@@ -1,5 +1,4 @@
 ﻿Public Class FormLogin
-    ' handle login button click event
     Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim username As String = txtUsername.Text.Trim()
         Dim password As String = txtPassword.Text.Trim()
@@ -21,7 +20,6 @@
 
         If username.Equals(DefaultUsername, StringComparison.OrdinalIgnoreCase) AndAlso
            password = DefaultPassword Then
-            ' login successful
             Dim frmKasir As New FormKasir()
             frmKasir.Show()
             Me.Close()

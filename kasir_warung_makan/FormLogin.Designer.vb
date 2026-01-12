@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FormLogin
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -15,52 +15,52 @@ Partial Class FormLogin
     End Sub
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+    Private components As IContainer
 
-    Private txtUsername As System.Windows.Forms.TextBox
-    Private txtPassword As System.Windows.Forms.TextBox
-    Private WithEvents btnLogin As System.Windows.Forms.Button
-    Private lblTitle As System.Windows.Forms.Label
-    Private lblUsername As System.Windows.Forms.Label
-    Private lblPassword As System.Windows.Forms.Label
+    Private txtUsername As TextBox
+    Private txtPassword As TextBox
+    Private WithEvents btnLogin As Button
+    Private lblTitle As Label
+    Private lblUsername As Label
+    Private lblPassword As Label
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
+        Me.components = New Container()
 
-        Me.lblTitle = New System.Windows.Forms.Label()
-        Me.lblUsername = New System.Windows.Forms.Label()
-        Me.txtUsername = New System.Windows.Forms.TextBox()
-        Me.lblPassword = New System.Windows.Forms.Label()
-        Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.btnLogin = New System.Windows.Forms.Button()
+        Me.lblTitle = New Label()
+        Me.lblUsername = New Label()
+        Me.txtUsername = New TextBox()
+        Me.lblPassword = New Label()
+        Me.txtPassword = New TextBox()
+        Me.btnLogin = New Button()
 
         Me.SuspendLayout()
 
         ' ===== Title =====
         With Me.lblTitle
             .AutoSize = True
-            .Font = New System.Drawing.Font("Segoe UI", 18.0F, FontStyle.Bold)
+            .Font = New Font("Segoe UI", 18.0F, FontStyle.Bold)
             .Text = "LOGIN KASIR"
-            .Location = New System.Drawing.Point(317, 66)
-            .ForeColor = System.Drawing.Color.FromArgb(0, 80, 160)
+            .Location = New Point(317, 66)
+            .ForeColor = Color.FromArgb(0, 80, 160)
         End With
 
         ' ===== Username =====
         With Me.lblUsername
             .AutoSize = True
-            .Font = New System.Drawing.Font("Segoe UI", 10.5F)
+            .Font = New Font("Segoe UI", 10.5F)
             .Text = "Username"
-            .Location = New System.Drawing.Point(260, 133)
+            .Location = New Point(260, 133)
         End With
 
         With Me.txtUsername
-            .Size = New System.Drawing.Size(280, 32)
-            .Font = New System.Drawing.Font("Segoe UI", 10.5F)
-            .Location = New System.Drawing.Point(260, 160)
+            .Size = New Size(280, 32)
+            .Font = New Font("Segoe UI", 10.5F)
+            .Location = New Point(260, 160)
             .MaxLength = 24
             .TabIndex = 0
         End With
@@ -68,15 +68,15 @@ Partial Class FormLogin
         ' ===== Password =====
         With Me.lblPassword
             .AutoSize = True
-            .Font = New System.Drawing.Font("Segoe UI", 10.5F)
+            .Font = New Font("Segoe UI", 10.5F)
             .Text = "Password"
-            .Location = New System.Drawing.Point(260, 208)
+            .Location = New Point(260, 208)
         End With
 
         With Me.txtPassword
-            .Size = New System.Drawing.Size(280, 32)
-            .Font = New System.Drawing.Font("Segoe UI", 10.5F)
-            .Location = New System.Drawing.Point(260, 235)
+            .Size = New Size(280, 32)
+            .Font = New Font("Segoe UI", 10.5F)
+            .Location = New Point(260, 235)
             .UseSystemPasswordChar = True
             .MaxLength = 64
             .TabIndex = 1
@@ -84,30 +84,30 @@ Partial Class FormLogin
 
         ' ===== Login Button =====
         With Me.btnLogin
-            .Size = New System.Drawing.Size(140, 45)
-            .Font = New System.Drawing.Font("Segoe UI", 11.0F, FontStyle.Bold)
+            .Size = New Size(140, 45)
+            .Font = New Font("Segoe UI", 11.0F, FontStyle.Bold)
             .Text = "MASUK"
-            .Location = New System.Drawing.Point(330, 296)
-            .BackColor = System.Drawing.Color.FromArgb(0, 120, 215)
-            .ForeColor = System.Drawing.Color.White
-            .FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            .Location = New Point(330, 296)
+            .BackColor = Color.FromArgb(0, 120, 215)
+            .ForeColor = Color.White
+            .FlatStyle = FlatStyle.Flat
             .FlatAppearance.BorderSize = 0
-            .Cursor = System.Windows.Forms.Cursors.Hand
+            .Cursor = Cursors.Hand
             .UseVisualStyleBackColor = False
             .TabIndex = 2
         End With
 
         ' ===== Form Settings =====
         With Me
-            .AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-            .ClientSize = New System.Drawing.Size(800, 450)
+            .AutoScaleMode = AutoScaleMode.Font
+            .ClientSize = New Size(800, 450)
             .Text = "Warung Makan - Login"
-            .BackColor = System.Drawing.Color.FromArgb(248, 249, 250)
-            .Font = New System.Drawing.Font("Segoe UI", 9.75F)
-            .FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+            .BackColor = Color.FromArgb(248, 249, 250)
+            .Font = New Font("Segoe UI", 9.75F)
+            .FormBorderStyle = FormBorderStyle.FixedDialog
             .MaximizeBox = False
             .MinimizeBox = False
-            .StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+            .StartPosition = FormStartPosition.CenterScreen
             .AcceptButton = Me.btnLogin
         End With
 
