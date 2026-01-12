@@ -5,7 +5,7 @@
     Dim bayar As New Decimal
     Dim noTransaksi As New Integer
     Dim tanggalTransaksi As New Date
-    Dim struk As New StringBuilder()
+    Dim struk As New StringBuilder
 
     Private Sub BtnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
         subtotal = 0D

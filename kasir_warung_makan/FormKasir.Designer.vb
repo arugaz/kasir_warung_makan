@@ -64,7 +64,7 @@ Partial Class FormKasir
 
         ' ===== Group Menu =====
         With Me.grpMenu
-            .Text = "Menu Makanan & Minuman"   ' ← fixed && to &
+            .Text = "Menu Makanan && Minuman"
             .Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
             .ForeColor = Color.FromArgb(0, 80, 160)
             .Location = New Point(15, 20)
