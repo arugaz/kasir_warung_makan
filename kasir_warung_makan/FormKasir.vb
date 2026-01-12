@@ -20,7 +20,7 @@
     End Sub
 
     Private Sub BtnCSV_Click(sender As Object, e As EventArgs) Handles btnCSV.Click
-        If bayar = 0 OrElse bayar < total Then
+        If bayar = 0D OrElse bayar < total Then
             MessageBox.Show(
                 "Tidak ada transaksi yang dapat disimpan.",
                 "Info",
@@ -30,32 +30,45 @@
             Return
         End If
 
-        Using sfd As New SaveFileDialog()
-            sfd.Filter = "CSV Files (*.csv)|*.csv"
-            sfd.Title = "Simpan Pesanan sebagai CSV"
-            sfd.FileName = $"pesanan_{tanggalTransaksi:yyyyMMdd}.csv"
-            If sfd.ShowDialog() = DialogResult.OK Then
-                Using writer As New IO.StreamWriter(sfd.FileName)
-                    writer.WriteLine("No. Transaksi,Tanggal,Menu,Jumlah,Harga Satuan,Total")
-                    For Each item As CartItem In lstPesanan.Items
-                        writer.WriteLine($"{noTransaksi},{tanggalTransaksi:yyyyMMdd_HHmmss},{item.Menu.Name},{item.Qty},{item.Menu.Price},{item.Total}")
-                    Next
-                    writer.WriteLine($",,Subtotal,,,{subtotal}")
-                    writer.WriteLine($",,Diskon,,,{diskon}")
-                    writer.WriteLine($",,Total,,,{total}")
-                End Using
-                MessageBox.Show(
-                    "Pesanan berhasil disimpan sebagai CSV",
-                    "Info",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                )
+        Dim filePath As String = IO.Path.Combine(Application.StartupPath, $"pesanan_{tanggalTransaksi:yyyyMMdd}.csv")
+
+        If Not IO.File.Exists(filePath) Then
+            Using sfd As New SaveFileDialog()
+                sfd.Filter = "CSV Files (*.csv)|*.csv"
+                sfd.Title = "Simpan Pesanan sebagai CSV"
+                sfd.InitialDirectory = IO.Path.GetDirectoryName(filePath)
+                sfd.FileName = IO.Path.GetFileName(filePath)
+
+                If sfd.ShowDialog() <> DialogResult.OK Then
+                    Return
+                End If
+
+                filePath = sfd.FileName
+            End Using
+        End If
+
+        Dim fileExists As Boolean = IO.File.Exists(filePath)
+
+        Using writer As New IO.StreamWriter(filePath, append:=True)
+            If Not fileExists Then
+                writer.WriteLine("No. Transaksi,Tanggal,Menu,Jumlah,Harga Satuan,Total")
             End If
+
+            For Each item As CartItem In lstPesanan.Items
+                writer.WriteLine($"{noTransaksi},{tanggalTransaksi:yyyyMMdd_HHmmss},{item.Menu.Name},{item.Qty},{item.Menu.Price},{item.Total}")
+            Next
         End Using
+
+        MessageBox.Show(
+            "Pesanan berhasil disimpan sebagai CSV",
+            "Info",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information
+        )
     End Sub
 
     Private Sub BtnStruk_Click(sender As Object, e As EventArgs) Handles btnStruk.Click
-        If bayar = 0 OrElse bayar < total Then
+        If bayar = 0D OrElse bayar < total Then
             MessageBox.Show(
                 "Pembayaran belum dilakukan",
                 "Info",
