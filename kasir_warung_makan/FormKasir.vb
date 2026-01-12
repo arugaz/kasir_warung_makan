@@ -63,26 +63,37 @@
 
         Dim kembalian As Integer = bayar - total
 
-        Dim struk As String = "===== STRUK PEMBAYARAN =====" & Environment.NewLine
-        struk &= $"No. Transaksi: {noTransaksi}" & Environment.NewLine
-        struk &= "----------------------------" & Environment.NewLine
+        Dim struk As New System.Text.StringBuilder()
+        Dim strukWidth As Integer = 45
 
+        struk.AppendLine(New String("="c, strukWidth))
+        struk.AppendLine("STRUK PEMBELIAN".PadLeft((strukWidth + "STRUK PEMBELIAN".Length) \ 2))
+        struk.AppendLine(New String("="c, strukWidth))
+        struk.AppendLine()
+        struk.AppendLine(String.Format("{0,-15}: {1}", "Tanggal", Date.Now.ToString("yyyy/MM/dd")))
+        struk.AppendLine(String.Format("{0,-15}: {1}", "Waktu", Date.Now.ToString("HH:mm:ss")))
+        struk.AppendLine(String.Format("{0,-15}: {1}", "No. Transaksi", noTransaksi))
+        struk.AppendLine()
+        struk.AppendLine(New String("-"c, strukWidth))
         For Each item As CartItem In lstPesanan.Items
-            struk &= $"{item.Menu.Name} x{item.Qty} = Rp{item.Total:N0}" & Environment.NewLine
+            struk.AppendLine(String.Format("{0,-20} x{1,-5} Rp{2,12:N0}", item.Menu.Name, item.Qty, item.Total))
         Next
-
-        struk &= "----------------------------" & Environment.NewLine
-        struk &= String.Format("{0,-20}Rp{1,12:N0}" & Environment.NewLine, "Subtotal", subtotal)
-        struk &= String.Format("{0,-20}Rp{1,12:N0}" & Environment.NewLine, "Diskon", diskon)
-        struk &= String.Format("{0,-20}Rp{1,12:N0}" & Environment.NewLine, "Total", total)
-        struk &= String.Format("{0,-20}Rp{1,12:N0}" & Environment.NewLine, "Bayar", bayar)
-        struk &= String.Format("{0,-20}Rp{1,12:N0}" & Environment.NewLine, "Kembalian", kembalian)
-        struk &= "============================" & Environment.NewLine
+        struk.AppendLine(New String("-"c, strukWidth))
+        struk.AppendLine()
+        struk.AppendLine(String.Format("{0,-27} Rp{1,12:N0}", "Subtotal", subtotal))
+        struk.AppendLine(String.Format("{0,-27} Rp{1,12:N0}", "Diskon", diskon))
+        struk.AppendLine(String.Format("{0,-27} Rp{1,12:N0}", "Total", total))
+        struk.AppendLine(String.Format("{0,-27} Rp{1,12:N0}", "Bayar", bayar))
+        struk.AppendLine(String.Format("{0,-27} Rp{1,12:N0}", "Kembalian", kembalian))
+        struk.AppendLine()
+        struk.AppendLine(New String("="c, strukWidth))
+        struk.AppendLine("Terima kasih atas kunjungan Anda!".PadLeft((strukWidth + "Terima kasih atas kunjungan Anda!".Length) \ 2))
+        struk.AppendLine(New String("="c, strukWidth))
 
         Using frm As New Form With {
             .Text = "Struk Pembayaran",
             .StartPosition = FormStartPosition.CenterScreen,
-            .Size = New Size(360, 500),
+            .Size = New Size(360, 460),
             .FormBorderStyle = FormBorderStyle.FixedDialog,
             .MaximizeBox = False,
             .MinimizeBox = False
@@ -94,10 +105,11 @@
                 .Dock = DockStyle.Fill,
                 .Font = New Font("Consolas", 10),
                 .ScrollBars = ScrollBars.Vertical,
-                .Text = struk
+                .Text = struk.ToString()
             }
 
             frm.Controls.Add(txtStruk)
+            AddHandler frm.Shown, Sub() frm.ActiveControl = Nothing
             frm.ShowDialog()
         End Using
     End Sub
